@@ -9,3 +9,9 @@ name = "pypi"
 
 [requires]
 python_version = "3.10"
+
+[scripts]
+build = "python setup.py sdist"
+install = "pip install -e ."
+uninstall = "python setup.py develop -u"
+app1 = "python tests/app1.py"
