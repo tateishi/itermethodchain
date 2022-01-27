@@ -1,6 +1,4 @@
 from functools import reduce
-import itertools
-from sqlite3 import enable_callback_tracebacks
 from typing import Callable, Iterable, TypeVar
 
 TIterMethodChain = TypeVar("TIterMethodChain", bound="IterMethodChain")
