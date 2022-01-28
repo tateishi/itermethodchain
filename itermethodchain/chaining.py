@@ -1,22 +1,24 @@
 from functools import reduce
 from typing import Callable, Iterable, TypeVar
 
+T = TypeVar("T")
+U = TypeVar("U")
 TIterMethodChain = TypeVar("TIterMethodChain", bound="IterMethodChain")
 
 class IterMethodChain:
-    def __init__(self, iterable: Iterable):
+    def __init__(self, iterable: Iterable[T]):
         self._iter = iterable
 
-    def map(self, func: Callable) -> TIterMethodChain:
+    def map(self, func: Callable[[T], U]) -> TIterMethodChain:
         return IterMethodChain(map(func, self._iter))
 
-    def filter(self, func: Callable) -> TIterMethodChain:
+    def filter(self, func: Callable[[T], bool]) -> TIterMethodChain:
         return IterMethodChain(filter(func, self._iter))
 
-    def list(self) -> Iterable:
+    def list(self) -> Iterable[T]:
         return list(self._iter)
 
-    def reduce(self, func: Callable, initializer=None):
+    def reduce(self, func: Callable[[T, U], T], initializer: T | None=None) -> T:
         if initializer:
             return reduce(func, self._iter, initializer)
         else:
