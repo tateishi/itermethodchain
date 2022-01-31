@@ -1,5 +1,5 @@
 from functools import reduce
-from typing import Callable, Iterable, TypeVar
+from typing import Callable, Iterable, TypeVar, Union
 
 T = TypeVar("T")
 U = TypeVar("U")
@@ -18,7 +18,7 @@ class IterMethodChain:
     def list(self) -> Iterable[T]:
         return list(self._iter)
 
-    def reduce(self, func: Callable[[T, U], T], initializer: T | None=None) -> T:
+    def reduce(self, func: Callable[[T, U], T], initializer: Union[T, None]=None) -> T:
         if initializer:
             return reduce(func, self._iter, initializer)
         else:
