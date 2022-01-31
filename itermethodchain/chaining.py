@@ -1,11 +1,11 @@
 from functools import reduce
-from typing import Callable, Iterable, TypeVar, Union
+from typing import Callable, Generic, Iterable, TypeVar, Union
 
 T = TypeVar("T")
 U = TypeVar("U")
 TIterMethodChain = TypeVar("TIterMethodChain", bound="IterMethodChain")
 
-class IterMethodChain:
+class IterMethodChain(Generic[T]):
     def __init__(self, iterable: Iterable[T]):
         self._iter = iterable
 
