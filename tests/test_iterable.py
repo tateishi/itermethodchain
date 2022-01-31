@@ -31,8 +31,8 @@ def test_map2():
 
 def test_map_filter():
     assert (
-        imc(range(10)).
-        filter(lambda n: n % 2 == 0)
+        imc(range(10))
+        .filter(lambda n: n % 2 == 0)
         .map(lambda n: n * 2).list()
         ) == [0, 4, 8, 12, 16]
 
