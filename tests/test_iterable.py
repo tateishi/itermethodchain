@@ -1,4 +1,3 @@
-from ast import Num
 from operator import add, mul
 from itermethodchain import IterMethodChain as imc
 
